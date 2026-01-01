@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./displayErResults.js" defer></script>
+    <link type="text/css" rel="stylesheet" href="./assets/css/displayErResults.css">
+    <title></title>
+</head>
+
+<body>
+
+    <header>
+        <!-- Logo -->
+        <div class="logo-area">
+            <a href="/">
+                <span style='color: #4285f4'>M</span><span style='color: #ea4335'>y</span><span
+                    style='color: #fbbc05'>r</span><span style='color: #4285f4'>i</span><span
+                    style='color: #34a853'>a</span><span style='color: #ea4335'>d</span></a>
+        </div>
+        <!-- Search -->
+        <div id="search-area">
+            <form class="search-container" action="./displayErResults.html">
+                <button type="submit" class="search-btn">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                        </path>
+                    </svg>
+                </button>
+                <input type="search" class="search-bar" name="q" id="searchBar" required>
+            </form>
+        </div>
+    </header>
+
+    <main role="main">
+        <div id="main">
+            <p class="results-stats" id="results-stats"></p>
+            <div class="related-search-box">
+                <p class="related-search">Entities</p>
+                <p class="related-search-title" id="relatedSearchTitle"></p>
+                <div class="items-links" id="itemsLinks">
+                </div>
+            </div>
+            <div class="search-results-block" id="searchResultsBlock">
+            </div>
+        </div>
+</body>
+
+</html>
