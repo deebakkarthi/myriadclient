@@ -55,7 +55,7 @@ async function getThumbnailURL(ent) {
         }
       }
       if (imageURL.length == 0) {
-        return "./no_image.png";
+        return "./assets/images/no_image.png";
       }
       return imageURL[0];
     });
@@ -145,15 +145,15 @@ async function getEntities() {
     .then((response) => {
       return response.json();
     })
-    .then((data) => {
+    .then(async (data) => {
       data = sortByValue(data);
       data = data.slice(0, 5);
       let i = 0;
       for (res in data) {
-        buildEntityElement(data[res][0]).then((el) => {
-          itemsLinks.replaceChild(el, loaders[i]);
-          i++;
-        });
+        // Make it await so that sort order is preserved
+        let el = await buildEntityElement(data[res][0]);
+        itemsLinks.replaceChild(el, loaders[i]);
+        i++;
       }
     });
 }
