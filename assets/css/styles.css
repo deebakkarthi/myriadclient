@@ -337,6 +337,12 @@ b {
         width: 196px;
 }
 
+.empty-item {
+        height: auto;
+        width: auto;
+        text-align: center;
+}
+
 .item a:visited>.item-name {
         color: #609;
 }
@@ -370,6 +376,7 @@ b {
         padding-bottom: 4px;
         padding-top: 14px;
         flex-wrap: wrap;
+        justify-content:center;
 }
 
 .item {

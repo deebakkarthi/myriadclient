@@ -109,9 +109,8 @@ async function updateResultStats(numResults, timeElapsed) {
 
 async function getEntities() {
   const baseURL = window.location.protocol + "//" + window.location.hostname;
-  const port = "5000";
-  const path = "/erRetrieve";
-  const targetURL = baseURL + ":" + port + path + "?";
+  const path = "/api/erRetrieve";
+  const targetURL = baseURL + path + "?";
 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -146,23 +145,33 @@ async function getEntities() {
       return response.json();
     })
     .then(async (data) => {
-      data = sortByValue(data);
-      data = data.slice(0, 5);
-      let i = 0;
-      for (res in data) {
-        // Make it await so that sort order is preserved
-        let el = await buildEntityElement(data[res][0]);
-        itemsLinks.replaceChild(el, loaders[i]);
-        i++;
+      console.log(data, Object.keys(data).length);
+      if (Object.keys(data).length !== 0) {
+        data = sortByValue(data);
+        data = data.slice(0, 5);
+        let i = 0;
+        for (res in data) {
+          // Make it await so that sort order is preserved
+          let el = await buildEntityElement(data[res][0]);
+          itemsLinks.replaceChild(el, loaders[i]);
+          i++;
+        }
+      } else {
+        for (let i = 0; i < 5; i++) {
+          itemsLinks.removeChild(loaders[i]);
+        }
+        let emptyEl = document.createElement("div");
+        emptyEl.classList.add("empty-item");
+        emptyEl.innerHTML = "No entities Found";
+        itemsLinks.appendChild(emptyEl);
       }
     });
 }
 
 async function getResults() {
   const baseURL = window.location.protocol + "//" + window.location.hostname;
-  const port = "5000";
-  const path = "/irRetrieve";
-  const targetURL = baseURL + ":" + port + path + "?";
+  const path = "/api/irRetrieve";
+  const targetURL = baseURL + path + "?";
 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);

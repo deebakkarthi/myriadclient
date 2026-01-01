@@ -30,9 +30,8 @@ async function updateResultStats(numResults, timeElapsed) {
 
 async function getResults() {
   const baseURL = window.location.protocol + "//" + window.location.hostname;
-  const port = "5000";
-  const path = "/irRetrieve";
-  const targetURL = baseURL + ":" + port + path + "?";
+  const path = "/api/irRetrieve";
+  const targetURL = baseURL + path + "?";
 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
